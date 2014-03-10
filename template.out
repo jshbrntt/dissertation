@@ -1,0 +1,33 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{HTML5}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{The Document Object Model \(DOM\)}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Web Browsers}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Cross Compatibility}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Graphics}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{Cascading Style Sheets \(CSS\)}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{Canvas}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.3}{SVG}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.4}{WebGL}{section.3}% 10
+\BOOKMARK [1][-]{section.4}{Audio}{}% 11
+\BOOKMARK [2][-]{subsection.4.1}{<audio> Element}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.2}{Web Audio API}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.3}{Native Audio}{section.4}% 14
+\BOOKMARK [1][-]{section.5}{Game Design}{}% 15
+\BOOKMARK [2][-]{subsection.5.1}{Player Interaction}{section.5}% 16
+\BOOKMARK [2][-]{subsection.5.2}{Gameplay \046 Mechanics}{section.5}% 17
+\BOOKMARK [2][-]{subsection.5.3}{Feedback}{section.5}% 18
+\BOOKMARK [1][-]{section.6}{Development Stack}{}% 19
+\BOOKMARK [2][-]{subsection.6.1}{Preprocessors \046 Alternatives}{section.6}% 20
+\BOOKMARK [3][-]{subsubsection.6.1.1}{CoffeeScript}{subsection.6.1}% 21
+\BOOKMARK [3][-]{subsubsection.6.1.2}{Sass}{subsection.6.1}% 22
+\BOOKMARK [3][-]{subsubsection.6.1.3}{Dart}{subsection.6.1}% 23
+\BOOKMARK [3][-]{subsubsection.6.1.4}{TypeScript}{subsection.6.1}% 24
+\BOOKMARK [2][-]{subsection.6.2}{Modular JavaScript}{section.6}% 25
+\BOOKMARK [2][-]{subsection.6.3}{Model View Controller \(MVC\)}{section.6}% 26
+\BOOKMARK [2][-]{subsection.6.4}{Templates}{section.6}% 27
+\BOOKMARK [2][-]{subsection.6.5}{Build Pipeline}{section.6}% 28
+\BOOKMARK [1][-]{section.7}{Mobile Deployment}{}% 29
+\BOOKMARK [2][-]{subsection.7.1}{Packaging}{section.7}% 30
+\BOOKMARK [2][-]{subsection.7.2}{Debugging}{section.7}% 31
+\BOOKMARK [2][-]{subsection.7.3}{Profiling}{section.7}% 32
+\BOOKMARK [1][-]{section*.4}{References}{}% 33
