@@ -6,6 +6,8 @@
 \usepackage{pgfgantt,rotating}
 \usepackage{subfloat}
 \usepackage{listings}
+\usepackage{xcolor}
+\usepackage{colortbl}
 
 \title{An Evaluation of HTML5\\as a Mobile Gaming Platform}
 
@@ -27,42 +29,61 @@ These are my achknowledgements
 \begin{document}
 
 \section{Introduction}
-For the past five years it has been evident that mobile devices have risen as one of the foremost dominant ways in which the modern world consumes media and entertainment. Alongside this, a new web standard has been developing. HTML5 (a popularly abused buzzword) is a new language specification with the primary purpose of succeeding where its predecessors failed, in delivering rich interactive content. To clarify what people really mean when referring to HTML5 is a host of technologies including but not limited to JavaScript (JS), Cascasing Style Sheets (CSS), Scalable Vector Graphics (SVG), WebGL, and the new Canvas element. When used together in varying combinations and configurations these form a Web Platform\footnote{\url{http://docs.webplatform.org/wiki/Main_Page}} on which to convey content and information in new and interesting ways. However, as it is becoming the convention to refer to this Web Platform as HTML5 I will follow suit in this report.
+For the past five years it has been evident that mobile devices have risen as one of the foremost dominant ways in which the modern world consumes media and entertainment. Alongside this, a new web standard has been developing. HTML5 (a popularly abused buzzword) is a new language specification with the primary purpose of succeeding where its predecessors failed, in delivering rich interactive content. Generally ``HTML5'' is used as an all encompassing term that includes a host of technologies, as it alone could not deliver such user experiences. Technologies such as JavaScript (JS), Cascasing Style Sheets (CSS), Scalable Vector Graphics (SVG) and WebGL. When used together in varying combinations and configurations these form a Web Platform\footnote{\url{http://docs.webplatform.org/wiki/Main_Page}} on which to convey content and information in new and interesting ways. However, it is currently the convention to refer to this new platform as HTML5.
 
-Because of the on going competition between OEMs (Original Equipment Manufacturers) such as Apple, LG, Nokia and Samsung in providing the better mobile products, the processing power of mobile devices has been increasing exponentially. This escalation in performance has been a key instigator in the growing support and optimization of HTML5 and JavaScript. However, it has only just begun to reach the requirements needed for delivering interactive real-time graphics applications through HTML5's features, such as video games.
+``Linux'' has similarly been distorted as an all encompassing term for Linux based operating systems such as Debian, Fedora, and Ubuntu. However, ``Linux'' alone is just the open-source kernel which lies at the heart of these distributions but on its own would not be of much use.
 
-The purpose of this project is to evaluate the current state of the HTML5 and its companion technologies on the mobile platform, and to assess whether they provide a suitable means to develop and deploy games. During the course of this project
+OEMs (Original Equipment Manufacturers) such as Apple, LG, Nokia and Samsung are becoming progressively competitive in producing better mobile devices for the global market. They offer higher resolution displays, more memory capacity, and increasingly faster processors. This escalation in performance has been a key instigator in the growing support and optimization of HTML5 and JavaScript on mobiles. However, it has only just begun to reach the requirements needed for delivering interactive real-time graphics applications through HTML5's features, such as video games.
+
+The purpose of this project is to evaluate the current state of the HTML5 and its companion technologies on the mobile platform, and to assess whether they provide a suitable means to develop and deploy games. To assist my research I will be designing and creating my own game, expanding my personal understanding of the platform along the way.
 
 \section{HTML5}
-HTML5 is the fifth iteration of the hypertext mark up language. During the previous iterations such as HTML4.01 there was no support for multimedia content. And as a result this as patched by third-party plugins such as Adobe Flash and Microsoft Silverlight. This allowed for easy presentation of media such as video, audio and even allowed for interactivity that was used to great effect in games.
+HTML5 is the fifth iteration of the hypertext mark up language. During its previous iterations such as HTML4.01 there was minimal support for multimedia content. This resulted in a void that was promptly filled by third-party plugins such as Adobe Flash and Microsoft Silverlight. Such plugins allowed for easy presentation of media such as video, audio and even allowed for interactivity that was used to great effect in games.
 
-However with these third-party plugins came limitations. One of which is they were proprietary and closed source. Meaning if there was an issue of debug with the runtime any developers working on these platforms would have to wait for a update or a patch. Or would have to find a work around.
+Unfortunately many of these plugins are proprietary and closed-source which prevents developers from fixing and debugging inherent issues in the technology. Instead they are dependant on the technology owner for solutions to these problems while being limited to reporting them or finding ``temporary'' workarounds. Often such plugins also require some form of installation process as they are ``add-ons'' and exist outside of the W3C standard. 
 
-Another disadvantage is the barrier to entry for most users. To view any content built for these runtimes they would have to be installed. 
-
-Steve Jobs vocalised his concerns with Flash and present sound reasoning as why Apple had no intentions of supporting or itergrating Flash into their iOS devices.
-
-It was briefly avaliable for Android but it was short lived and eventually Adobe threw in the towel. However they are still making strives into the mobile platform with their new runtime Adobe AIR.
-
-HTML5 is still currently a work in progress but the W3C have made plans to have the specification finalized as of July this year.
+\citet{SJobs} famously professed his concerns about Flash and presented sound reasoning as to why Apple had no intentions of supporting or integrating Flash into their iOS devices. Flash was also briefly available for Android but it was short lived and eventually discontinued by Adobe. Adobe is continuing to making strides into the mobile platform with their new runtime AIR\footnote{\url{https://www.adobe.com/aboutadobe/pressroom/pressreleases/201002/021510FlashPlayerMWC.html}}. HTML5 is still currently a work in progress but the \citet{W3C} have made plans to stabilize the specification and help it reach \textit{Recommendation}\footnote{\url{http://www.w3.org/2005/10/Process-20051014/tr.html\#rec-publication}} status as of this year.
 
 \subsection{The Document Object Model (DOM)}
-When beginning to write an application the first document that is usually created is a \texttt{.html} file. This file is effectively just a plain text file filled with characters as is any source code. However what makes HTML different from most compiled languages such as C++ and Java, is its a interpreted language. Compiled languages are conventionally converted into a binary format that compresses the instructions into machine-code allowing for quicker execution. Interpreted languages in contrast are read line-by-line with their instructions parsed at run-time.
+The document object model (DOM) is the core of what drives modern web applications. It provides a means to manipulate the structure and style of the original document loaded from a web server at run-time on the client side.
 
-When HTML is executed in a web browsers it is parsed into what is called the document object model (DOM). The DOM is a representation in memory of what was originally describe in the text file. This allows the browsers to interpret relations between elements are use them to render the document to the user. While in memory the information is not longer static allowing for manipulation by other technologies such as JavaScript.
+However, what makes HTML different from most compiled languages such as C++ and Java, is its a interpreted language. Compiled languages are typically converted into a binary format that compresses their instructions into machine-code allowing for quicker execution. Interpreted languages in contrast are often read line-by-line with their instructions parsed and executed at run-time.
 
-One example of this is the single-page application (SPA). interpreted similar similar to that of in its raw form by a web browser. This web browser then parses the raw  Document Object Model (DOM)
+When HTML is interpreted by a web browsers it is parsed into a DOM. The DOM is essentially a representation in memory of what was originally marked down in the static HTML document. This allows the browsers to interpret relations between elements and use them to render the document appropriately. While in memory the information is not longer static allowing for manipulation by other technologies such as JavaScript.
+
+One example of where this manipulation is used to great effect is the single-page application (SPA). SPAs have significant advantages over that of traditional websites as they can provide a seamless user experience similar to that of desktop applications. Instead of navigating through links that loading separate HTML pages they use states to manage the flow, loading information dynamically when required or requested. This methodology shrinks factors such as load times, enables rich interactions, responsiveness while encouraging reuse. \citep{MTakada}
 
 \subsection{Web Browsers}
-When a user navigates to a site it requests a page at a specified location via a URL. This address is in turned passed to a DNS server which returns the current IP address of where the requested page is located. Once the browser recieves the requested page it begins parsing it
+Web browsers are client side applications that render the information requested by the user delivered from a web server. Many of the popular browser vendors such as Google (Chrome), Apple (Safari), and Mozilla (Firefox) all have a mobile counterpart. However these mobile counterparts often support a subset of their desktop editions making much of the fringe HTML5 features even less supported.
 
 \subsection{Cross Compatibility}
-a
+Getting a single web application to function and display consistently across a range of browsers can be a huge undertaking. As the specification of HTML5 was being developed much of the features have been implemented in browsers at the discretion of the browser vendor. This has quickly lead to cross compatibility issues as older browsers will support less of these new features and not necessarily be consistent with the other browsers that were also available at the time of release.
+
+One such feature I had planned on using when initially developing my mobile game was \textit{viewport units}. This feature allows for the scaling of elements based upon the viewport's dimensions which is especially useful on mobile devices for scaling document elements relative to the screen's aspect ratio. However the stock web browsers on mobile devices have almost non-existent support for this feature and it would severely limit my target platforms.
+
+\definecolor{c0}{HTML}{FF9999}
+\definecolor{c1}{HTML}{CCDD55}
+\definecolor{c2}{HTML}{99FF33}
+
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|} \hline
+  iOS                      & Opera                    & Android                  & Opera  & Blackberry & Chrome      & Firefox     & IE        \\
+  Safari                   & Mini                     & Browser                  & Mobile & Browser    & for Android & for Android & Mobile    \\ \hline
+  ~                        & ~                        & {\cellcolor{c0}} 2.1     & ~      & ~          & ~           & ~           & ~         \\ \hline
+  ~                        & ~                        & {\cellcolor{c0}} 2.2     & ~      & ~          & ~           & ~           & ~         \\ \hline
+  {\cellcolor{c0}} 3.2     & ~                        & {\cellcolor{c0}} 2.3     & ~      & ~          & ~           & ~           & ~         \\ \hline
+  {\cellcolor{c0}} 4.0-4.1 & ~                        & {\cellcolor{c0}} 3.0     & 10.0   & ~          & ~           & ~           & ~         \\ \hline
+  {\cellcolor{c0}} 4.2-4.3 & ~                        & {\cellcolor{c0}} 4.0     & 11.5   & ~          & ~           & ~           & ~         \\ \hline
+  {\cellcolor{c0}} 5.0-5.1 & ~                        & {\cellcolor{c0}} 4.1     & 12.0   & ~          & ~           & ~           & ~         \\ \hline
+  {\cellcolor{c1}} 6.0-6.1 & ~                        & {\cellcolor{c0}} 4.2-4.3 & 12.1   & 7.0        & ~           & ~           & ~         \\ \hline
+  {\cellcolor{c1}} 7.0     & {\cellcolor{c0}} 5.0-7.0 & {\cellcolor{c2}} 4.4     & 16.0   & 10.0       & 33.0        & 26.0        & 10.0      \\ \hline
+  \end{tabular}
+\end{center}
 
 \section{Graphics}
 When it comes to rendering in HTML5 are I many different options with varying advantages and disadvantages.
 
-\subsection{Cascading Style Sheets (CSS)}
+\subsection{CSS}
 CSS is used to style the way the document elements are rendered. By instructing the browser to use  instructing the browser
 
 \subsection{Canvas}
@@ -115,7 +136,7 @@ Preprocessors are vastly popular these days amongst developers with their focus 
 The advantages of transpilers often mean that less can be written in order to achieve the same functionality in its target language. Simple common activities such as writing a for loop to iterate over an array or providing the vendor prefix and polyfills required to support backwards compatibility with older web browsers can be taxing on a developers time. Transpilers can offer an alternative means in which to achieve the same results bit with less code and effort required on the part of the developer.
 
 \subsubsection{CoffeeScript}
-CoffeeScript\footnote{\url{http://coffeescript.org/}} is a popular alternative to JavaScript with its focus on readability similar to that of other syntactically sugary \cite{ESR} languages such as Ruby and Python.
+CoffeeScript\footnote{\url{http://coffeescript.org/}} is a popular alternative to JavaScript with its focus on readability similar to that of other syntactically sugary \cite[p.~432]{raymond1996new} languages such as Ruby and Python.
 
 \subsubsection{Sass}
 Sass is a popular CSS preprocessor which addresses many of its shortcomings.
@@ -129,6 +150,7 @@ a
 \subsection{Modular JavaScript}
 a
 
+
 \subsection{Model View Controller (MVC)}
 a
 
@@ -139,7 +161,7 @@ a
 a
 
 \section{Mobile Deployment}
-a
+Once a HTML5 game 
 
 \subsection{Packaging}
 a
