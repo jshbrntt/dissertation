@@ -42,7 +42,7 @@ HTML5 is the fifth iteration of the hypertext mark up language. During its previ
 
 Unfortunately many of these plugins are proprietary and closed-source which prevents developers from fixing and debugging inherent issues in the technology. Instead they are dependant on the technology owner for solutions to these problems while being limited to reporting them or finding ``temporary'' workarounds. Often such plugins also require some form of installation process as they are ``add-ons'' and exist outside of the W3C standard. 
 
-\citet{SJobs} famously professed his concerns about Flash and presented sound reasoning as to why Apple had no intentions of supporting or integrating Flash into their iOS devices. Flash was also briefly available for Android but it was short lived and eventually discontinued by Adobe. Adobe is continuing to making strides into the mobile platform with their new runtime AIR\footnote{\url{https://www.adobe.com/aboutadobe/pressroom/pressreleases/201002/021510FlashPlayerMWC.html}}. HTML5 is still currently a work in progress but the \citet{W3C} have made plans to stabilize the specification and help it reach \textit{Recommendation}\footnote{\url{http://www.w3.org/2005/10/Process-20051014/tr.html\#rec-publication}} status as of this year.
+\citet{Jobs} famously professed his concerns about Flash and presented sound reasoning as to why Apple had no intentions of supporting or integrating Flash into their iOS devices. Flash was also briefly available for Android but it was short lived and eventually discontinued by Adobe. Adobe is continuing to making strides into the mobile platform with their new runtime AIR\footnote{\url{https://www.adobe.com/aboutadobe/pressroom/pressreleases/201002/021510FlashPlayerMWC.html}}. HTML5 is still currently a work in progress but the \citet{W3C} have made plans to stabilize the specification and help it reach \textit{Recommendation}\footnote{\url{http://www.w3.org/2005/10/Process-20051014/tr.html\#rec-publication}} status as of this year.
 
 \subsection{The Document Object Model (DOM)}
 The document object model (DOM) is the core of what drives modern web applications. It provides a means to manipulate the structure and style of the original document loaded from a web server at run-time on the client side.
@@ -51,7 +51,7 @@ However, what makes HTML different from most compiled languages such as C++ and 
 
 When HTML is interpreted by a web browsers it is parsed into a DOM. The DOM is essentially a representation in memory of what was originally marked down in the static HTML document. This allows the browsers to interpret relations between elements and use them to render the document appropriately. While in memory the information is not longer static allowing for manipulation by other technologies such as JavaScript.
 
-One example of where this manipulation is used to great effect is the single-page application (SPA). SPAs have significant advantages over that of traditional websites as they can provide a seamless user experience similar to that of desktop applications. Instead of navigating through links that loading separate HTML pages they use states to manage the flow, loading information dynamically when required or requested. This methodology shrinks factors such as load times, enables rich interactions, responsiveness while encouraging reuse. \citep{MTakada}
+One example of where this manipulation is used to great effect is the single-page application (SPA). SPAs have significant advantages over that of traditional websites as they can provide a seamless user experience similar to that of desktop applications. Instead of navigating through links that loading separate HTML pages they use states to manage the flow, loading information dynamically when required or requested. This methodology shrinks factors such as load times, enables rich interactions, responsiveness while encouraging reuse. \citep{Takada}
 
 \subsection{Web Browsers}
 Web browsers are client side applications that render the information requested by the user delivered from a web server. Many of the popular browser vendors such as Google (Chrome), Apple (Safari), and Mozilla (Firefox) all have a mobile counterpart. However these mobile counterparts often support a subset of their desktop editions making much of the fringe HTML5 features even less supported.
@@ -59,26 +59,10 @@ Web browsers are client side applications that render the information requested 
 \subsection{Cross Compatibility}
 Getting a single web application to function and display consistently across a range of browsers can be a huge undertaking. As the specification of HTML5 was being developed much of the features have been implemented in browsers at the discretion of the browser vendor. This has quickly lead to cross compatibility issues as older browsers will support less of these new features and not necessarily be consistent with the other browsers that were also available at the time of release.
 
-One such feature I had planned on using when initially developing my mobile game was \textit{viewport units}. This feature allows for the scaling of elements based upon the viewport's dimensions which is especially useful on mobile devices for scaling document elements relative to the screen's aspect ratio. However the stock web browsers on mobile devices have almost non-existent support for this feature and it would severely limit my target platforms.
+One such feature I had planned on using when initially developing my mobile game was \textit{viewport units}. This feature allows for the scaling of elements based upon the viewport's dimensions which is especially useful on mobile devices for scaling visual elements relative to the screen's aspect ratio. However the stock web browsers on mobile devices have almost non-existent support for this feature and has only just started to be introduced in version 4.4 of Android and 6.0 of iOS.
 
-\definecolor{c0}{HTML}{FF9999}
-\definecolor{c1}{HTML}{CCDD55}
-\definecolor{c2}{HTML}{99FF33}
+In cases like this a developer can either limit that target platform range and make use of the fringe features available on mobile devices or use a polyfill also known as a shim. A polyfill is often referred to as code that substitutes the lack of a future API by utilising existing features to mimic that of newer fully fledged implementations. \cite{Lawson} I my case I had to polyfill the lack of \textit{viewport units} in older mobile browsers. After searching for a solution I came across the slides of \cite{Kadrmas} presentation that detailed the use of \textit{em} units in HTML5 games. \textit{em} units were originally intended for scaling document elements relative to the current font size. I used this to implement consistent scaling of my game across differing screen sizes by adjusting the root document element's font size relative to the screen width of the current device. This approach also made it easy to retain a specified aspect ratio preventing any oddities when displaying on landscape displays.
 
-\begin{center}
-  \begin{tabular}{|c|c|c|c|c|c|c|c|c|} \hline
-  iOS                      & Opera                    & Android                  & Opera  & Blackberry & Chrome      & Firefox     & IE        \\
-  Safari                   & Mini                     & Browser                  & Mobile & Browser    & for Android & for Android & Mobile    \\ \hline
-  ~                        & ~                        & {\cellcolor{c0}} 2.1     & ~      & ~          & ~           & ~           & ~         \\ \hline
-  ~                        & ~                        & {\cellcolor{c0}} 2.2     & ~      & ~          & ~           & ~           & ~         \\ \hline
-  {\cellcolor{c0}} 3.2     & ~                        & {\cellcolor{c0}} 2.3     & ~      & ~          & ~           & ~           & ~         \\ \hline
-  {\cellcolor{c0}} 4.0-4.1 & ~                        & {\cellcolor{c0}} 3.0     & 10.0   & ~          & ~           & ~           & ~         \\ \hline
-  {\cellcolor{c0}} 4.2-4.3 & ~                        & {\cellcolor{c0}} 4.0     & 11.5   & ~          & ~           & ~           & ~         \\ \hline
-  {\cellcolor{c0}} 5.0-5.1 & ~                        & {\cellcolor{c0}} 4.1     & 12.0   & ~          & ~           & ~           & ~         \\ \hline
-  {\cellcolor{c1}} 6.0-6.1 & ~                        & {\cellcolor{c0}} 4.2-4.3 & 12.1   & 7.0        & ~           & ~           & ~         \\ \hline
-  {\cellcolor{c1}} 7.0     & {\cellcolor{c0}} 5.0-7.0 & {\cellcolor{c2}} 4.4     & 16.0   & 10.0       & 33.0        & 26.0        & 10.0      \\ \hline
-  \end{tabular}
-\end{center}
 
 \section{Graphics}
 When it comes to rendering in HTML5 are I many different options with varying advantages and disadvantages.
@@ -136,7 +120,7 @@ Preprocessors are vastly popular these days amongst developers with their focus 
 The advantages of transpilers often mean that less can be written in order to achieve the same functionality in its target language. Simple common activities such as writing a for loop to iterate over an array or providing the vendor prefix and polyfills required to support backwards compatibility with older web browsers can be taxing on a developers time. Transpilers can offer an alternative means in which to achieve the same results bit with less code and effort required on the part of the developer.
 
 \subsubsection{CoffeeScript}
-CoffeeScript\footnote{\url{http://coffeescript.org/}} is a popular alternative to JavaScript with its focus on readability similar to that of other syntactically sugary \cite[p.~432]{raymond1996new} languages such as Ruby and Python.
+CoffeeScript\footnote{\url{http://coffeescript.org/}} is a popular alternative to JavaScript with its focus on readability similar to that of other syntactically sugary \cite{Raymond} languages such as Ruby and Python.
 
 \subsubsection{Sass}
 Sass is a popular CSS preprocessor which addresses many of its shortcomings.
@@ -147,9 +131,22 @@ a
 \subsubsection{TypeScript}
 a
 
-\subsection{Modular JavaScript}
-a
+\subsection{JavaScript Modules}
+\textit{JavaScript} is typically created as separate \texttt{.js} text files that are then referenced in a \texttt{.html} document by \texttt{<script>} tags. When the web browser finds scripts linked by these tags it will request them from the web server and inject them into the document once loaded. This presents a few problems for large and complex web applications which will often require many scripts each having to be requested and loaded synchronously. Every one of these request has an overhead, which is compounded when a vast quantity are being made. This can lead to suboptimal load times.
 
+To combat this problem a developer could attempt to write all their code in one \texttt{.js} file. This file can quickly become colossal making it difficult to manage and refactor, especially on large scale projects. Alternatively the developer can split their code into several \texttt{.js} files that will all have to be referenced by a corresponding \texttt{<script>} tag. Therefore the more organised the codebase becomes the more requests the browser has to make. The developer also has to micromanage these \texttt{<script>} tags to ensure their ordering is correct. The ordering is important because one script could be referencing another that has not yet been loaded, thus causing runtime errors. This approach also presents issues when attempting to introduce software engineering best practices such as unit testing because the interdependencies between these scripts are not clearly defined.
+
+One solution to this common problem is the \textit{module} design pattern. \textit{JavaScript} has an official name \textit{ECMAScript}, and version \textit{5.1} (ECMA-262\footnote{\url{http://www.ecma-international.org/ecma-262/5.1/}}) is the current standard. However, this present language specification does not support \textit{modules}. The 6th version\footnote{\url{https://people.mozilla.org/~jorendorff/es6-draft.html}} of the \textit{ECMAScript} specification is currently being drafted with plans to include modules but until then developers must seek other alternatives.
+
+There are a variety of libraries that offer solutions such as \textit{RequireJS\footnote{\url{http://requirejs.org/}}}, \textit{HeadJS\footnote{\url{http://headjs.com/}}} and \textit{yepnope.js\footnote{\url{http://yepnopejs.com/}}}. However, personally I found \textit{Browserify\footnote{\url{http://browserify.org/}}} to be the simplest and the most supported amongst the \textit{Node.js} community. \textit{Browserify} enables developers to write their \textit{JavaScript} code in numerous files and when one file requires another it can be injected via the \texttt{require(`example');} function. Once a developer has written all their code they can recursively bundle all their modules starting with a root module similar to that of a main class in conventional programming languages. This provides the developer with the best of both scenarios as all their code will be built into a single \texttt{.js} file (including their external libraries), while allowing for easy management and refactoring of their core codebase through individual source files.
+
+Most might think that this will in turn cause complications when debugging. As when the code breaks it will do so in the colossal \texttt{.js} file that the browser is running. This is where source maps come in. Source maps provide linkage between the original \texttt{.js} source files and their bundled counterparts making breakpoints and stepping through code painless. \cite{Seddon}
+
+This process can also be made seamless by \textit{Watchify} which automatically recompiles the \textit{Browserify} bundle whenever a module file has been updated. This allows for the developer to work on their original source files and as soon as the file has been saved it have rebuilt the bundle ready to reloaded in the browser for testing.
+
+After the modules have been bundled a further step called minification which involves taking legible \textit{JavaScript} and compressing it down into its most minimal form by removing unnecessary characters such as a whitespace and shrinking instance names. This process can further decrease the \texttt{.js} file size making load times marginally faster while also partially obfuscating the original code from prying eyes.
+
+\cite{Hanselman} proclaimed that \textit{JavaScript} has become akin to a assembly language for the web. Which is the impression a lot of people will get when taking a peek at the source of popular website such as \textit{Google} or \textit{Facebook}. This is some what understandable given the that \textit{JavaScript} is as low-level as developers can get when programming for the web. However, a happy side effect of being closely tide with the web is it has become now one of the most portable languages to date, because every web enabled device has a browser, and every browser has a \textit{JavaScript} virtual machine. This makes \textit{JavaScript} a very cross-platform language to develop games with and reaching a wide audience is key when maximising chances for success.
 
 \subsection{Model View Controller (MVC)}
 a
@@ -161,7 +158,13 @@ a
 a
 
 \section{Mobile Deployment}
-Once a HTML5 game 
+One of the challenges that faces mobile developers is how to package their applications for the mobile platform, which spans such a wide variety of hardware and operating systems (iOS\footnote{\url{http://www.apple.com/ios/}}, Android\footnote{\url{http://www.android.com/}}, Windows Phone\footnote{\url{http://www.windowsphone.com/}}, Ubuntu\footnote{\url{http://www.ubuntu.com/phone}}), \cite{Feijoo}. This poses a problem especially for the smaller companies as to develop native variants of an application for each platform while retaining a common vision is demanding on both financial and chronological frontiers. Larger companies that facilitate and accommodate such resources, do however frequently benefit from having a superior overall user experience. Most native applications built with their corresponding software development kits have direct access to device specific  application programming intefaces (APIs). This often results in native applications having faster performance and better system user interface integration. Native applications compile to binary machine code that is then interpreted via its relative hardware architecture making it vastly faster than JavaScript which is interpreted at run-time via a browser or web-view. This is most apparent when it comes to developing 3D gaming experiences as these can often be most the most performance taxing, \cite{Kulloli}.
+
+When comparing HTML5 based mobile applications to native there was another significant disadvantage as there was no way to access device APIs. Such APIs are required to make use of the most basic hardware features on mobile devices such as the camera, device orientation and battery status. Especially considering that each API varies dependant on operating system and then again on hardware specification. For instance not all mobiles have front facing cameras or high-dpi (dots per inch) screens but a vast majority do. So it becomes quite a challenge when trying to build an application that adapts from phone-to-phone without excluding a particular sector of an audience from the core user experience, \cite{Charland}.
+
+A project with the sole purpose of remedying such issues is that of PhoneGap a mobile development framework originally created by a company called Nitboi. After PhoneGap began to make strides the company was purchased and enveloped by Adobe in 2011, \cite{Adobe}. Then after the project matured under Adobe's supervision the project was donated to the Apache Software Foundation. This was to ensure that the project was properly maintained when made open source under the Apache License Version 2.0\footnote{\url{http://www.apache.org/licenses/LICENSE-2.0.html}}. A formality due to this hand over was that the open source variety of the project had to operate under a different name to avoid trademark ambiguity, \cite{Leroux}. Adobe's PhoneGap still functions as a separate entity as a distribution of Apache Cordova offering services such as cloud compilation\footnote{\url{https://build.phonegap.com/}}.
+
+Apache Cordova\footnote{\url{http://cordova.apache.org/}} is a platform for building native mobile applications using HTML, CSS and JavaScript. It achieves this by providing developers with a set of relative device APIs that allow for access of functions previous obfuscated from web technologies by the native system. It also assists with handling a lot of the cross-platform concerns previously mention when targeting multiple platforms and device hardware.
 
 \subsection{Packaging}
 a
