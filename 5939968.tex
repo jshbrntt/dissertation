@@ -115,21 +115,27 @@ This was the case with the initial draft of introductory level. In the beginning
 When creating a game targeting HTML5 it can be difficult to know what workflow to invest in. Developers each have their own preferences and beliefs as to what is the best way to work with their priorities often being similar but achieved in different ways.
 
 \subsection{Preprocessors \& Alternatives}
-Preprocessors are vastly popular these days amongst developers with their focus often on efficiency. Transpilers (source-to-source compilers) are one such common way in which to improve a developers workflow. With current web languages such as JavaScript and CSS widely supported and heavily standardised by W3C it often takes along time for improvements to make their way into the next specification iteration.
+\textit{JavaScript} in its current state (\textit{ECMAScript 5.1}) is an underwhelming language especially when coming from a more mature high-level language background such as \textit{C++} or \textit{Java}. It lacks conventional object-orientated features such as inheritance, generics, and abstraction. The original purpose of \textit{JavaScript} was never intended for the large-scale development it is currently involved in today. And until it's apparent deficiencies are rectified and standardised in its next iteration (\textit{ECMAScript 6}), developers have to over utilise its strengths. To help assist in this transitional period many organisations have been developing alternatives and middle ware to deal with its short comings.
 
+Preprocessors are vastly popular these days amongst developers with their focus often on efficiency. Transpilers (source-to-source compilers) are one such common way in which to improve a developers workflow. With current web languages such as JavaScript and CSS widely supported and heavily standardised by W3C it often takes along time for improvements to make their way into the next specification iteration.
+\begin{figure}[h]
+  \includegraphics[width=1.0\textwidth]{lang-rank-114-wm.png}
+  \caption[The RedMonk Programming Language Rankings: January 2014 (Top 39)]{The RedMonk Programming Language Rankings: January 2014 (Top 39)}
+\end{figure}
+\footnotetext{\url{http://redmonk.com/sogrady/2014/01/22/language-rankings-1-14/}}
 The advantages of transpilers often mean that less can be written in order to achieve the same functionality in its target language. Simple common activities such as writing a for loop to iterate over an array or providing the vendor prefix and polyfills required to support backwards compatibility with older web browsers can be taxing on a developers time. Transpilers can offer an alternative means in which to achieve the same results bit with less code and effort required on the part of the developer.
 
-\subsubsection{CoffeeScript}
-CoffeeScript\footnote{\url{http://coffeescript.org/}} is a popular alternative to JavaScript with its focus on readability similar to that of other syntactically sugary \cite{Raymond} languages such as Ruby and Python.
-
-\subsubsection{Sass}
-Sass is a popular CSS preprocessor which addresses many of its shortcomings.
-
 \subsubsection{Dart}
-a
+Google's Dart\footnote{\url{https://www.dartlang.org/}} offers a more uniform pleasant development experience by handling much of the cross-browser compatibility issues behind the scenes. It also contains built-in libraries to handle much of common programming activities; \texttt{``dart:math, dart:json, dart:io, dart:collection...''} as well as familiar functionality similar to jQuery\footnote{\url{http://jquery.com}/} \texttt{``query(), queryAll()''} (one of the most popular JavaScript libraries to date)\footnote{\url{http://trends.builtwith.com/}}, \cite{Fortuna}. Dart compiles down to either machine code that runs on the accompanying DartVM (virtual machine) which is integrated into Google's browser; Chrome, or to an optimized and minified form of JavaScript that'll run in any browser. However there is a significant performance advantage over that of the latter, \cite{Schneider}. 
 
 \subsubsection{TypeScript}
-a
+Another alternative to pure JavaScript is Microsoft's TypeScript\footnote{\url{http://www.typescriptlang.org/}} which has taken a more subtle approach. TypeScript is a typed superset of JavaScript that compiles to plain JavaScript which is much more legible when compared with Dart's output making it easier to debug at runtime in-browser. It is still quite a premature project currently in the preview stage but is making significant strides to towards a version 1.0 release, \cite{Turner}. Both approaches have their pros and cons. They are interesting developments and will be intriguing to follow as they evolve along side HTML5.
+
+%\subsubsection{CoffeeScript}
+%CoffeeScript\footnote{\url{http://coffeescript.org/}} is a popular alternative to JavaScript with its focus on readability similar to that of other syntactically sugary \cite{Raymond} languages such as Ruby and Python.
+
+%\subsubsection{Sass}
+%Sass is a popular CSS preprocessor which addresses many of its shortcomings.
 
 \subsection{JavaScript Modules}
 \textit{JavaScript} is typically created as separate \texttt{.js} text files that are then referenced in a \texttt{.html} document by \texttt{<script>} tags. When the web browser finds scripts linked by these tags it will request them from the web server and inject them into the document once loaded. This presents a few problems for large and complex web applications which will often require many scripts each having to be requested and loaded synchronously. Every one of these request has an overhead, which is compounded when a vast quantity are being made. This can lead to suboptimal load times.
@@ -160,7 +166,9 @@ a
 \section{Mobile Deployment}
 One of the challenges that faces mobile developers is how to package their applications for the mobile platform, which spans such a wide variety of hardware and operating systems (iOS\footnote{\url{http://www.apple.com/ios/}}, Android\footnote{\url{http://www.android.com/}}, Windows Phone\footnote{\url{http://www.windowsphone.com/}}, Ubuntu\footnote{\url{http://www.ubuntu.com/phone}}), \cite{Feijoo}. This poses a problem especially for the smaller companies as to develop native variants of an application for each platform while retaining a common vision is demanding on both financial and chronological frontiers. Larger companies that facilitate and accommodate such resources, do however frequently benefit from having a superior overall user experience. Most native applications built with their corresponding software development kits have direct access to device specific  application programming intefaces (APIs). This often results in native applications having faster performance and better system user interface integration. Native applications compile to binary machine code that is then interpreted via its relative hardware architecture making it vastly faster than JavaScript which is interpreted at run-time via a browser or web-view. This is most apparent when it comes to developing 3D gaming experiences as these can often be most the most performance taxing, \cite{Kulloli}.
 
-When comparing HTML5 based mobile applications to native there was another significant disadvantage as there was no way to access device APIs. Such APIs are required to make use of the most basic hardware features on mobile devices such as the camera, device orientation and battery status. Especially considering that each API varies dependant on operating system and then again on hardware specification. For instance not all mobiles have front facing cameras or high-dpi (dots per inch) screens but a vast majority do. So it becomes quite a challenge when trying to build an application that adapts from phone-to-phone without excluding a particular sector of an audience from the core user experience, \cite{Charland}.
+When comparing HTML5 based mobile applications to native there was another significant disadvantage as there was no way to access device APIs. Such APIs are required to make use of the most 
+
+ hardware features on mobile devices such as the camera, device orientation and battery status. Especially considering that each API varies dependant on operating system and then again on hardware specification. For instance not all mobiles have front facing cameras or high-dpi (dots per inch) screens but a vast majority do. So it becomes quite a challenge when trying to build an application that adapts from phone-to-phone without excluding a particular sector of an audience from the core user experience, \cite{Charland}.
 
 A project with the sole purpose of remedying such issues is that of PhoneGap a mobile development framework originally created by a company called Nitboi. After PhoneGap began to make strides the company was purchased and enveloped by Adobe in 2011, \cite{Adobe}. Then after the project matured under Adobe's supervision the project was donated to the Apache Software Foundation. This was to ensure that the project was properly maintained when made open source under the Apache License Version 2.0\footnote{\url{http://www.apache.org/licenses/LICENSE-2.0.html}}. A formality due to this hand over was that the open source variety of the project had to operate under a different name to avoid trademark ambiguity, \cite{Leroux}. Adobe's PhoneGap still functions as a separate entity as a distribution of Apache Cordova offering services such as cloud compilation\footnote{\url{https://build.phonegap.com/}}.
 
