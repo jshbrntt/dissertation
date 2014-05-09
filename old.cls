@@ -4,7 +4,7 @@
 % Base this class on KOMA script article class file
 % A 5mm binding is added to margin
 %
-\LoadClass[12pt,BCOR0.5cm,twoside=false]{scrartcl}
+\LoadClass[12pt,BCOR0.5cm,twoside=false,appendixprefix=false]{scrartcl}
 
 %\KOMAoptions{appendixprefix=true}.
 % Required packages
@@ -47,7 +47,7 @@
 %
 % KOMA-script package for headings
 %
-\RequirePackage{scrpage2}
+\RequirePackage{scrlayer-scrpage}
 %
 % Enables to handle url in citations
 % Also allow clickable section/citations/refs in PDF
