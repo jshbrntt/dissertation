@@ -312,7 +312,7 @@ While educating myself in JavaScript I found the lack of built-in structure daun
 
 Several improvements arose after the switch from rendering on Canvas to utilising the DOM. For instance, the original implementation of the card flip effect was achieved by simply tweening the width of the images to 0 and back. This technique produced a very flat effect. After switching from this Canvas implementation to using DOM elements, I was able to make use of CSS3 transforms. These transforms allow for 3D manipulation one area that the EaselJS library was lacking in. This allowed me to add perspective to the flip effect, which made it more aesthetically pleasing and helped highlight the user's interaction. The transition could be applied through adding and removing a CSS class selector to and from a particular card's DOM element. CSS3 transforms are hardware accelerated on many mobile devices, making the animation smoother than with the previous implementation. Also, because the browser handled process of rendering, it applied anti-aliasing by default making the edges of the images less jagged.
 
-\begin{figure}[h!]{Comparison of original flip effect and current flip effect (left-to-right)\label{transforms}}
+\begin{figure}[h!]{A comparison of original flip effect and current flip effect (left-to-right)\label{transforms}}
   \includegraphics[width=1.0\textwidth]{transforms.png}
 \end{figure}
 
